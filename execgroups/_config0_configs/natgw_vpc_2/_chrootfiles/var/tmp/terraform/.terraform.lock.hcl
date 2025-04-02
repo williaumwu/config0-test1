@@ -18,3 +18,4 @@ provider "registry.opentofu.org/hashicorp/aws" {
     "zh:f5186377a986b96150611d891700d49125367b4ad3ab534b429305e8fdaa8dcc",
   ]
 }
+
