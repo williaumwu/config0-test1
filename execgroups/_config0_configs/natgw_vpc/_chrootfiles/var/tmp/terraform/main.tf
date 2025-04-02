@@ -39,5 +39,3 @@ output "public_ip" {
 output "allocation_id" {
   value = aws_nat_gateway.nat_gateway.allocation_id
 }
-
-
