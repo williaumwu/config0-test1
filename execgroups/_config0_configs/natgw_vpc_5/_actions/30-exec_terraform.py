@@ -3,6 +3,8 @@ def default():
         'method': 'shelloutconfig',
         'metadata': {
             'env_vars': [],
-            'shelloutconfigs': ['config0-publish:::terraform::resource_wrapper']
+            'shelloutconfigs': ['williaumwu:::config0-test1::resource_wrapper']
         }
     }
+
+
