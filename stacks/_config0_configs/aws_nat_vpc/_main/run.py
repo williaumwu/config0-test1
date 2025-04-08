@@ -41,45 +41,5 @@ def run(stackargs):
                              tags="tfvar,db,resource,tf_exec_env",
                              types="str")
 
-    # add execgroup
-    stack.add_execgroup("config0-publish:::aws_networking::natgw_vpc",
-                        "tf_execgroup")
-
-    # add substack
-    stack.add_substack("config0-publish:::tf_executor")
-
-    # initialize
-    stack.init_variables()
-    stack.init_execgroups()
-    stack.init_substacks()
-
-    stack.set_variable("timeout", 600)
-
-    stack.set_variable("public_subnet_id",
-                       sorted(stack.to_list(stack.public_subnet_ids))[0],
-                       tags="tfvar",
-                       types="str")
-
-    tf = TFConstructor(stack=stack,
-                       execgroup_name=stack.tf_execgroup.name,
-                       provider="aws",
-                       resource_name=stack.nat_gateway_name,
-                       resource_type="nat_gateway")
-
-    tf.include(values={
-        "aws_default_region": stack.aws_default_region,
-        "name": stack.nat_gateway_name,
-        "nat_gateway_name": stack.nat_gateway_name,
-    })
-
-    tf.output(keys=["connectivity_type",
-                    "network_interface_id",
-                    "private_ip",
-                    "public_ip",
-                    "allocation_id"])
-
-    # finalize the tf_executor
-    stack.tf_executor.insert(display=True,
-                             **tf.get())
 
     return stack.get_results()
