@@ -43,7 +43,7 @@ def run(stackargs):
 
 
     stack.add_execgroup("williaumwu:::config0-test1::natgw_vpc")
-    #stack.add_substack('williaumwu:::tf_executor')
+    stack.add_substack('williaumwu:::test_stack')
 
     # Initialize
     stack.init_variables()
