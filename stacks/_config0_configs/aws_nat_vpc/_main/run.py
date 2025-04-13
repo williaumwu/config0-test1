@@ -42,6 +42,15 @@ def run(stackargs):
                              types="str")
 
 
+    stack.add_execgroup("williaumwu:::config0-test1::sg_3tier")
+    stack.add_substack('williaumwu:::tf_executor')
+
+    # Initialize
+    stack.init_variables()
+    stack.init_execgroups()
+    stack.init_substacks()
+
+
     return stack.get_results()
 
 
